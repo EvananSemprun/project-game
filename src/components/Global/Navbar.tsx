@@ -1,5 +1,5 @@
 import { IconSun, IconMoonStars, IconAt, IconBrandInstagram, IconBrandFacebookFilled, IconBrandWhatsapp } from '@tabler/icons-react';
-import { ActionIcon, Card, useMantineColorScheme, Text, Group, TextInput, Title, HoverCard, Stack, useMantineTheme, Burger, Drawer } from '@mantine/core';
+import { ActionIcon, Card, useMantineColorScheme, Text, Group, TextInput, Title, HoverCard, useMantineTheme, Burger, Drawer } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useState } from 'react';
 
@@ -13,7 +13,7 @@ function Navbar() {
     return (
         <>
             <Card shadow="sm" p="lg">
-                {isMobile && (
+                {!isMobile && (
                     <Burger
                         opened={opened}
                         onClick={() => setOpened((o) => !o)}
@@ -21,13 +21,14 @@ function Navbar() {
                     />
                 )}
 
+
                 <Drawer
                     opened={opened}
                     onClose={() => setOpened(false)}
                     title="Navigation"
                     padding="xl"
-                    size="lg"  
-                    position="left" 
+                    size="lg"
+                    position="left"
                     overlayColor={theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2]}
                     overlayOpacity={0.55}
                     overlayBlur={3}
@@ -59,27 +60,27 @@ function Navbar() {
                     </Group>
                 </Group>
             </Card>
-            
+
             {isMobile && (
-                <Group mt={15} position="apart" mr={45} ml={45}>
-                    <Group spacing="xl">
-                        <HoverCard width={320} shadow="md">
+                <Group mt={15} position="apart" mr="15%" ml="15%" >
+                    <Group spacing="xl" position="apart"  >
+                        <HoverCard width={320}  shadow="md">
                             <HoverCard.Target>
-                                <Text fw={700}>Bold</Text>
+                                <Text mr={15} fw={700}>Bold</Text>
                             </HoverCard.Target>
                             <HoverCard.Dropdown>
                             </HoverCard.Dropdown>
                         </HoverCard>
                         <HoverCard width={320} shadow="md">
                             <HoverCard.Target>
-                                <Text fw={700}>Bold</Text>
+                            <Text mr={15} fw={700}>Bold</Text>
                             </HoverCard.Target>
                             <HoverCard.Dropdown>
                             </HoverCard.Dropdown>
                         </HoverCard>
                         <HoverCard width={320} shadow="md">
                             <HoverCard.Target>
-                                <Text fw={700}>Bold</Text>
+                            <Text mr={15} fw={700}>Bold</Text>
                             </HoverCard.Target>
                             <HoverCard.Dropdown>
                             </HoverCard.Dropdown>
@@ -88,8 +89,9 @@ function Navbar() {
                     <TextInput
                         placeholder="Buscar...."
                         radius="lg"
-                        w="45%"
+                        w="40%"
                         size="lg"
+                        
                         icon={<IconAt size={14} />}
                     />
                 </Group>
