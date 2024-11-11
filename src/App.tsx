@@ -1,14 +1,12 @@
-import { Button } from '@mantine/core'
 import './App.css'
 import Navbar from './components/Global/Navbar'
+import Carousel from './components/Slider'
 function App() {
 
   return (
     <>
     <Navbar/>
-       <Button mt={5} color="grape" radius="lg">
-      Settingss
-    </Button>
+       <Carousel/>
     </>
   )
 }

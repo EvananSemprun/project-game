@@ -1,14 +1,15 @@
-import { IconSun, IconMoonStars, IconAt, IconBrandInstagram, IconBrandFacebookFilled, IconBrandWhatsapp } from '@tabler/icons-react';
-import { ActionIcon, Card, useMantineColorScheme, Text, Group, TextInput, Title, HoverCard, useMantineTheme, Burger, Drawer } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { useMediaQuery } from '@mantine/hooks';
+import { IconAt, IconBrandInstagram, IconBrandFacebookFilled, IconBrandWhatsapp } from '@tabler/icons-react';
+import { ActionIcon, Card, useMantineColorScheme, Text, Group, TextInput, Title, HoverCard, useMantineTheme, Burger, Drawer } from '@mantine/core';
 
 function Navbar() {
-    const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+    const { colorScheme } = useMantineColorScheme();
     const dark = colorScheme === 'dark';
-    const [opened, setOpened] = useState(false);
     const theme = useMantineTheme();
     const isMobile = useMediaQuery('(min-width: 1000px)');
+    const [opened, setOpened] = useState(false);
 
     return (
         <>
@@ -20,7 +21,6 @@ function Navbar() {
                         title={opened ? 'Close navigation' : 'Open navigation'}
                     />
                 )}
-
 
                 <Drawer
                     opened={opened}
@@ -42,56 +42,71 @@ function Navbar() {
 
                     <Group spacing="lg" position={isMobile ? "apart" : "center"}>
                         <ActionIcon color={dark ? 'yellow' : 'dark'} radius="xl">
-                            <IconBrandInstagram size={34} />
+                            <IconBrandInstagram color='#FBC403' size={34} />
                         </ActionIcon>
                         <ActionIcon color={dark ? 'yellow' : 'dark'} radius="xl">
-                            <IconBrandFacebookFilled size={34} />
+                            <IconBrandFacebookFilled color='#FBC403' size={34} />
                         </ActionIcon>
                         <ActionIcon color={dark ? 'yellow' : 'dark'} radius="xl">
-                            <IconBrandWhatsapp size={34} />
+                            <IconBrandWhatsapp color='#FBC403' size={34} />
                         </ActionIcon>
+                        {/* 
                         <ActionIcon
                             color={dark ? 'yellow' : 'dark'}
                             onClick={() => toggleColorScheme()}
                             title="Toggle color scheme"
                         >
                             {dark ? <IconSun size={34} /> : <IconMoonStars size={34} />}
-                        </ActionIcon>
+                        </ActionIcon> 
+                        */}
                     </Group>
                 </Group>
             </Card>
 
             {isMobile && (
                 <Group mt={15} position="apart" mr="15%" ml="15%" >
-                    <Group spacing="xl" position="apart"  >
-                        <HoverCard width={320}  shadow="md">
-                            <HoverCard.Target>
-                                <Text mr={15} fw={700}>Bold</Text>
-                            </HoverCard.Target>
-                            <HoverCard.Dropdown>
-                            </HoverCard.Dropdown>
-                        </HoverCard>
-                        <HoverCard width={320} shadow="md">
-                            <HoverCard.Target>
-                            <Text mr={15} fw={700}>Bold</Text>
-                            </HoverCard.Target>
-                            <HoverCard.Dropdown>
-                            </HoverCard.Dropdown>
-                        </HoverCard>
-                        <HoverCard width={320} shadow="md">
-                            <HoverCard.Target>
-                            <Text mr={15} fw={700}>Bold</Text>
-                            </HoverCard.Target>
-                            <HoverCard.Dropdown>
-                            </HoverCard.Dropdown>
-                        </HoverCard>
+                    <Group spacing="xl" position="apart">
+                        {['Option 1', 'Option 2', 'Option 3'].map((label, index) => (
+                            <HoverCard width={320} radius="lg" shadow="md" key={index} openDelay={250}>
+                                <HoverCard.Target>
+                                    <motion.div
+                                        initial={{ opacity: 0.8 }}
+                                        whileHover={{ opacity: 1, scale: 1.1 }}
+                                        transition={{ type: 'spring', stiffness: 300 }}
+                                    >
+                                        <Text
+                                            mr={15}
+                                            fw={700}
+                                            sx={{
+                                                color: 'white',
+                                            }}
+                                            component={motion.div}
+                                            whileHover={{ color: '#FBC403' }}
+                                            transition={{ duration: 0 }}
+                                        >
+                                            {label}
+                                        </Text>
+                                    </motion.div>
+                                </HoverCard.Target>
+                                <HoverCard.Dropdown >
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 20 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        <Text size="sm">Description for {label}</Text>
+                                    </motion.div>
+                                </HoverCard.Dropdown>
+                            </HoverCard>
+                        ))}
                     </Group>
                     <TextInput
                         placeholder="Buscar...."
                         radius="lg"
                         w="40%"
                         size="lg"
-                        
+
                         icon={<IconAt size={14} />}
                     />
                 </Group>
