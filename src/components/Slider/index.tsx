@@ -1,26 +1,42 @@
 import './Slider.css';
 import { Image } from '@mantine/core';
-import { Carousel} from '@mantine/carousel';
+import { Carousel } from '@mantine/carousel';
 
-function index() {
+function Index() {
+  const images = [
+    'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/steamworks_docs/english/Steam_Theme_Doc_Banner.jpg',
+    'https://placeimg.com/800/200/nature',
+    'https://placeimg.com/800/200/tech',
+  ];
 
   return (
-    <>
-      <Carousel slideSize="70%" height={200} slideGap="md" mt={25} loop dragFree mr='20%' ml='20%'>
-
-      <div style={{ width: 240, marginLeft: 'auto', marginRight: 'auto' }}>
-
-      <Image
-        radius="md"
-        src="https://images.unsplash.com/photo-1627552245715-77d79bbf6fe2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=640&q=80"
-        alt="Random unsplash image"
-        caption="My dog begging for treats"
-      />
-      
-    </div>
-      </Carousel>
-    </>
+    <Carousel
+      height={200}
+      slideSize="100%"
+      slideGap={0}
+      mt={15}
+      mr="10%"
+      ml="10%"
+      withControls={false}
+      breakpoints={[
+        { maxWidth: 'md', slideSize: '100%', slideGap: 0 },
+        { maxWidth: 'sm', slideSize: '100%', slideGap: 0 },
+      ]}
+      loop
+      align="center"
+    >
+      {images.map((src, index) => (
+        <Carousel.Slide key={index}>
+          <Image
+            radius="md"
+            src={src}
+            alt={`Image ${index + 1}`}
+            style={{ width: '100%', height: '100%' }}
+          />
+        </Carousel.Slide>
+      ))}
+    </Carousel>
   );
 }
 
-export default index;
+export default Index;
