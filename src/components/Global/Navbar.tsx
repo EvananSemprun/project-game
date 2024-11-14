@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
-import { IconAt, IconBrandInstagram, IconBrandFacebookFilled, IconBrandWhatsapp } from '@tabler/icons-react';
+import { IconAt, IconUser, IconShoppingCart, IconBrandWhatsapp } from '@tabler/icons-react';
 import { ActionIcon, Card, useMantineColorScheme, Text, Group, TextInput, Title, HoverCard, useMantineTheme, Burger, Drawer } from '@mantine/core';
 
 function Navbar() {
@@ -42,10 +42,10 @@ function Navbar() {
 
                     <Group spacing="lg" position={isMobile ? "apart" : "center"}>
                         <ActionIcon color={dark ? 'yellow' : 'dark'} radius="xl">
-                            <IconBrandInstagram color='#FBC403' size={34} />
+                            <IconUser color='#FBC403' size={34} />
                         </ActionIcon>
                         <ActionIcon color={dark ? 'yellow' : 'dark'} radius="xl">
-                            <IconBrandFacebookFilled color='#FBC403' size={34} />
+                            <IconShoppingCart color='#FBC403' size={34} />
                         </ActionIcon>
                         <ActionIcon color={dark ? 'yellow' : 'dark'} radius="xl">
                             <IconBrandWhatsapp color='#FBC403' size={34} />
