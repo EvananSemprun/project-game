@@ -14,6 +14,11 @@ function App() {
         <Title c='#FBC403' order={2}>Mas</Title> <Title order={2}>Vendidos</Title>
       </Group>
       <CarouselPro />
+      <Group mt={15} ml="5%">
+
+        <Title c='#FBC403' order={2}>Mas</Title> <Title order={2}>Vendidos</Title>
+      </Group>
+      <CarouselPro />
 
     </>
   )

@@ -1,8 +1,8 @@
-import { useCallback, useEffect, useState } from 'react';
 import { Carousel, Embla } from '@mantine/carousel';
-import { Card, Image, ActionIcon } from '@mantine/core';
-import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCallback, useEffect, useState } from 'react';
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
+import { Card, Image, ActionIcon, Text, Title } from '@mantine/core';
 
 function Index() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -90,16 +90,19 @@ function Index() {
               <Image
                 src={card.image}
                 alt={card.title}
-                radius="lg"
+                fit="cover"
+                height="100%"
+                radius='md'
+                width="100%"
+                style={{ objectFit: 'cover' }}
               />
-              <h3 style={{ margin: '10px 0 5px' }}>{card.title}</h3>
-              <p>Desde: <strong>{card.price}</strong></p>
+              <Title ta="center" order={4}>{card.title}</Title>
+              <Text ta="center" fz="md">Desde: <strong>{card.price}</strong></Text>
             </Card>
           </Carousel.Slide>
         ))}
       </Carousel>
 
-      {/* Controles de navegación con animación */}
       <AnimatePresence>
         {showControls && (
           <>

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import { IconAt, IconUser, IconShoppingCart, IconBrandWhatsapp } from '@tabler/icons-react';
-import { ActionIcon, Card, useMantineColorScheme, Text, Group, TextInput, Title, HoverCard, useMantineTheme, Burger, Drawer } from '@mantine/core';
+import { ActionIcon, Card, useMantineColorScheme, Text, Group, TextInput, Title, HoverCard, useMantineTheme, Burger, Drawer, Grid } from '@mantine/core';
 
 function Navbar() {
     const { colorScheme } = useMantineColorScheme();
@@ -88,14 +88,24 @@ function Navbar() {
                                         </Text>
                                     </motion.div>
                                 </HoverCard.Target>
-                                <HoverCard.Dropdown >
+                                <HoverCard.Dropdown>
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: 20 }}
                                         transition={{ duration: 0.3 }}
                                     >
-                                        <Text size="sm">Description for {label}</Text>
+                                        <Grid grow>
+                                            {Array.from({ length: 10 }).map((_, index) => (
+                                                <Grid.Col key={index} xs={12} sm={6} md={4} lg={3} xl={2}>
+                                                    <Card shadow="sm" radius="md" withBorder>
+                                                        <Card.Section>
+                                                            <h4>Card {index + 1}</h4>
+                                                        </Card.Section>
+                                                    </Card>
+                                                </Grid.Col>
+                                            ))}
+                                        </Grid>
                                     </motion.div>
                                 </HoverCard.Dropdown>
                             </HoverCard>
